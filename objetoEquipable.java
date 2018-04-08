@@ -27,7 +27,7 @@ public class objetoEquipable {
         return mejoraBaseObj;
     }  
     public void setMejoraBase(){
-        int mejoraBase = (int)(Math.random()*(9-1+1)+1);
+        int mejoraBaseObj = (int)(Math.random()*(9-1+1)+1);
     }
     
     public int getRango(){
