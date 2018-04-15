@@ -1,0 +1,7 @@
+Hasta el momento hay 4 clases, que son Luchador, Monstruo, inventarioLuchadores
+y objetoEquipable. Entre Luchador y inventarioLuchadores existe asociacion debido
+a que Luchador debe saber sobre la existencia de inventarioLuchador, y viceversa.
+En relacion a la multiplicidad de estas, Luchador tiene multiplicidad 1:25 y
+inventarioLuchador 1.
+Encontramos otra relacion entre Monstruo y objetoEquipable, la cual seria USO,
+ya que Monstruo usa metodos de la clase objetoEquipable para la creacion de objetos. 
