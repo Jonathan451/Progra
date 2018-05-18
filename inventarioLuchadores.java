@@ -7,110 +7,59 @@ import java.util.Scanner;
 
 public class inventarioLuchadores {
     
-    public static void main(String[]args){
-        
-        
-        ArrayList <Luchador> jugadores = new ArrayList<>();
-        Scanner teclado = new Scanner(System.in);
-        int opc = 0;
-        
-        while( opc != 7){
-            System.out.println("BIENVENIDOS");
-            System.out.println("....................................");
-            System.out.println("1. AGREGAR JUGADOR");
-            System.out.println("2. MOSTRAR LISTA DE JUGADORES");
-            System.out.println("3. ELIMINAR JUGADOR");
-            System.out.println("4. STATS");
-            System.out.println("5. FACCIONES");
-            System.out.println("6. RANGO");
-            System.out.println("7. ABANDONAR");
-            opc = teclado.nextInt();
-            
-        switch (opc) {
-            
-            case 1:
-                System.out.println("JUGADOR CREADO");
-                agregarLuchador(jugadores);
-                break;
-            
-            case 2:
-                System.out.println("JUGADORES");
-                System.out.println("............................");
-                verLuchador(jugadores);
-               break;
-
-            case 3:
-                System.out.println("JUGADOR ELIMINADO");
-            	eliminarLuchador(jugadores);
-                break;                             
-            
-            case 4:
-                System.out.println("STATS");
-                System.out.println("............................");
-            	verStats(jugadores);
-            	break;
-            	
-            case 5:
-                System.out.println("FACCION");  
-                System.out.println("............................");
-                Ffaccion(jugadores);                
-            	break;
-            	
-            case 6:
-                System.out.println("RANGO");
-                System.out.println("............................");
-                Frango(jugadores);
-            	break;
-            	
-            case 7:
-                System.out.println("ADIOS");
-                System.out.println("............................");
-                System.exit(0);
-                break;
-        }
-        }
+    ArrayList <Luchador> jugadores;
+    Scanner teclado = new Scanner (System.in);
+    private int luchadores;
+    
+    public inventarioLuchadores(){
+        luchadores = 25;
+        jugadores = new ArrayList <Luchador>();
+        jugadores.add(new Luchador());
     }
     
-    
-    public static void agregarLuchador(ArrayList<Luchador> peleador){        
-        peleador.add(new Luchador());
+    public ArrayList<Luchador> getLuchadores() {
+		return jugadores;
+	}
+    public void setLuchadores(ArrayList<Luchador> jugadores) {
+		this.jugadores = jugadores;
+	} 
+   
+    public void agregarLuchador(){
+        if (jugadores.size() < luchadores) {
+            jugadores.add(new Luchador());
+        }
+        else {
+            System.out.println("NO HAY ESPACIO DISPONIBLE EN EL INVENTARIO DE LUCHADORES");
+        }
     }
-    
-        
-    public static void eliminarLuchador(ArrayList<Luchador> peleador){
-            
-        Scanner teclado = new Scanner(System.in);           
+          
+    public void eliminarLuchador(){         
             
         System.out.println("JUGADOR A ELIMINAR:");
         int eliminar = teclado.nextInt();
-        peleador.remove(eliminar-1);
+        jugadores.remove(eliminar-1);
     }
         
     
-    public static void verLuchador(ArrayList<Luchador> peleador ){
+    public void verLuchador(){
         
-        for(int i=0; i<peleador.size();i++) {			
+        for(int i=0; i<jugadores.size();i++) {			
             
             System.out.println("LUCHADOR NRO "+(i+1));
-            peleador.get(i).mostrarLuchador();
+            jugadores.get(i).mostrarLuchador();
             System.out.println("");
         }
     }
         
-    
-    public static void verStats(ArrayList<Luchador> peleador){
-
-        Scanner teclado = new Scanner(System.in);           
+    public void verStats(){       
         
         System.out.println("JUGADOR A VER:");
         int ver = teclado.nextInt();
-        peleador.get(ver-1).mostrarEstadisticas();
+        jugadores.get(ver-1).mostrarEstadistica();
     }
     
-    public static void Ffaccion( ArrayList<Luchador> peleador){
+    public void FFaccion(){
         
-        Scanner teclado = new Scanner(System.in);
-
         ArrayList<Luchador> faccion = new ArrayList<>();
               
         
@@ -120,10 +69,10 @@ public class inventarioLuchadores {
         System.out.println("3. AIRE");
         String opcion = teclado.nextLine();
 
-        for(int i=0; i<peleador.size(); i++){
+        for(int i=0; i<jugadores.size(); i++){
             
-            if(peleador.get(i).getFaccion().equals(opcion)){
-                faccion.add(peleador.get(i));
+            if(jugadores.get(i).getFaccionL().equals(opcion)){
+                faccion.add(jugadores.get(i));
             }
         }
         for(int i=0; i<faccion.size();i++) {
@@ -131,30 +80,73 @@ public class inventarioLuchadores {
             faccion.get(i).mostrarLuchador();	
         }
     }
-    public static void Frango( ArrayList<Luchador> peleador){
-        
-        Scanner teclado = new Scanner(System.in);
+    public void FRango(){  
 
-        ArrayList<Luchador> Rango = new ArrayList<>();
+        ArrayList<Luchador> rango = new ArrayList<>();
               
         
         System.out.println("ELIJA FILTRO RANGO:");
         System.out.println("1. 1 ESTRELLA");
         System.out.println("2. 2 ESTRELLA");       
         System.out.println("3. 3 ESTRELLA");
-        System.out.println("3. 4 ESTRELLA");
-        System.out.println("3. 5 ESTRELLA");
+        System.out.println("4. 4 ESTRELLA");
+        System.out.println("5. 5 ESTRELLA");
         int opcion = teclado.nextInt();
 
-        for(int i=0; i<peleador.size(); i++){
+        for(int i=0; i<jugadores.size(); i++){
             
-            if(peleador.get(i).getRango() == opcion){
-                Rango.add(peleador.get(i));
+            if(jugadores.get(i).getRango() == opcion){
+                rango.add(jugadores.get(i));
             }
         }
-        for(int i=0; i<Rango.size();i++) {
+        for(int i=0; i<rango.size();i++) {
             System.out.println(".................................");
-            Rango.get(i).mostrarLuchador();	
+            rango.get(i).mostrarLuchador();	
+        }
+    }
+    
+    public tatic void main(String [] args){             
+        
+        //inventarioLuchadores IL = new inventarioLuchadores();
+        Scanner teclado = new Scanner(System.in);
+        
+        int opc=0;
+        
+        while(opc != 4){
+        
+        System.out.println("1.AGREGAR");
+        System.out.println("2.VER");
+        System.out.println("3.STATS");
+        System.out.println("4.ABANDONAR");
+        
+        opc = teclado.nextInt();
+            
+        switch (opc) {
+            
+            case 1:
+                System.out.println("JUGADOR CREADO");
+                System.out.println("");
+                agregarLuchador();
+                break;
+            
+            case 2:
+                System.out.println("JUGADORES");
+                System.out.println("............................");
+                verLuchador();
+               break;
+
+            case 3:
+                System.out.println("VER STATS");
+                System.out.println("");
+            	verStats();
+                break;
+                
+            case 4:
+                System.out.println("ADIOS");
+                System.out.println("............................");
+                System.exit(0);
+                break;
+        }
         }
     }
 }

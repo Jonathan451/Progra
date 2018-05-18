@@ -11,15 +11,12 @@ public class objetoEquipable {
     private int mejoraBaseObj;
     private int mejoraBaseTotal;
     private int rangoObjeto;
-    private String objetoElegido, objetoFinal, objeto, levelUp;
+    private String objeto, levelUp;
     
     
     public objetoEquipable(){
         
-        setMejoraBase();
-        setRango();       
-        setBaseTotal();
-        setAtributoMejorado();        
+        crearObjeto();
         
     }
     
@@ -27,14 +24,14 @@ public class objetoEquipable {
         return mejoraBaseObj;
     }  
     public void setMejoraBase(){
-        int mejoraBaseObj = (int)(Math.random()*(9-1+1)+1);
+        mejoraBaseObj = (int)(Math.random()*(9-1+1)+1);
     }
     
     public int getRango(){
         return rangoObjeto;
     }
-    public void setRango(){
-        
+    
+    public void setRango(){       
         double random = Math.random();
         
         if(random<=0.2){
@@ -100,10 +97,15 @@ public class objetoEquipable {
     public String getGenerarObjeto(){
         return objeto;
     }
-    /*public int elegirObjeto(){       
-        setGenerarObjeto();
-        setAtributoMejorado();
-    }*/
+    
+    public void crearObjeto(){
+        
+        this.setAtributoMejorado();
+        this.setBaseTotal();
+        this.setMejoraBase();
+        this.setRango();      
+    }
+
     public void muestraResultados(){
         System.out.println("STAT BASE: "+getMejoraBase());
         System.out.println("RANGO: "+getRango());

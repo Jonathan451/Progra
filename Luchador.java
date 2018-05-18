@@ -15,14 +15,7 @@ public class Luchador {
 	private String faccionLuchador;
 	
 	public Luchador() {
-           
-            setSalud();		
-            setAtaque();
-            setDefensa();
-            setVelocidad();		           
-            setNombre();
-            setFaccion();
-            setRango();
+            crearLuchador();
 	}
        
         public int getSalud() {
@@ -85,38 +78,44 @@ public class Luchador {
         }
         
         
-        public String getFaccion() {
+        public String getFaccionL() {
 		return faccionLuchador;
 	}	        
-        public void setFaccion() {
+        public void setFaccionL() {
             faccionLuchador = faccion[new Random().nextInt(faccion.length)];
 	}
         
         
-	public String getNombre() {
+	public String getNombreL() {
             return nombreLuchador;
 	}
-        public void setNombre() {
+        public void setNombreL() {
             nombreLuchador = nombres[new Random().nextInt(nombres.length)];		
 	}
-                                         	                
-        
+              
+                                         	                      
         public void mostrarLuchador() {	
             
-            System.out.println("NOMBRE : "+getNombre());
-            System.out.println("FACCION : "+getFaccion());
+            System.out.println("NOMBRE : "+getNombreL());
+            System.out.println("FACCION : "+getFaccionL());
             System.out.println("ESTRELLAS : "+getRango());
         }
 
-        public void mostrarEstadisticas() {
+        public void mostrarEstadistica() {
             
             System.out.println("STATS:");
             System.out.println("..................................");
             System.out.println("SALUD : "+getSalud());
             System.out.println("ATAQUE : "+getAtaque());
             System.out.println("DEFENSA : "+getDefensa());
-            System.out.println("VELOCIDAD : "+getVelocidad());
-            
+            System.out.println("VELOCIDAD : "+getVelocidad());           
+        }
+        
+        public void crearLuchador(){
+            this.setAtaque();
+            this.setDefensa();
+            this.setSalud();
+            this.setVelocidad();
         }
 }
 

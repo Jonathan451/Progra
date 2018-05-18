@@ -7,13 +7,11 @@ import java.util.Random;
 public class Monstruo {    
     
     private int saludM, ataqueM, defensaM, velocidadM;
+    private String[] faccionM = {"FUEGO","AGUA","PLANTA"};
+    private String faccionMonstruo;
     
-    public Monstruo(){
-        
-        setSaludM();  
-        setAtaqueM();
-        setDefensaM();
-        setVelocidadM();
+    public Monstruo(){            
+        crearMonstruo();
     }
     
     public int getSaludM() {
@@ -39,14 +37,27 @@ public class Monstruo {
     public void setDefensaM() {
         defensaM = ((int)(Math.random()*(25-5+1)+5));
     }
-        
-        
+               
     public int getVelocidadM() {
         return velocidadM;
     }
     public void setVelocidadM() {
         velocidadM = ((int)(Math.random()*(100-10+1)+10));
     } 
+    
+    public String getFaccionM() {
+		return faccionMonstruo;
+	}	        
+        public void setFaccionM() {
+            faccionMonstruo = faccionM[new Random().nextInt(faccionM.length)];
+	}
+      
+    public void crearMonstruo(){
+        this.setAtaqueM();
+        this.setDefensaM();
+        this.setSaludM();
+        this.setVelocidadM();
+    }
     
     public void crearObjetoDropeable(){
         objetoEquipable obj = new objetoEquipable();
